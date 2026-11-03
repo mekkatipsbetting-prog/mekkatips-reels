@@ -1,0 +1,37 @@
+name: render-reel
+on:
+  workflow_dispatch:
+    inputs:
+      data:
+        description: "JSON con hook_big, hook_sub, total_label y picks[{tag,pick,odds,units}]"
+        required: true
+      tag:
+        description: "Nombre unico del release (ej. reel-2026-11-04)"
+        required: true
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Dependencias
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-inter fonts-noto-color-emoji
+          npm i playwright@1.49.0
+          npx playwright install --with-deps chromium
+      - name: Datos
+        env:
+          DATA: ${{ inputs.data }}
+        run: printf '%s' "$DATA" > data.json
+      - name: Render
+        run: node render/render.js
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: gh release create "$TAG" reel.mp4 --title "$TAG" --notes "reel automatico"

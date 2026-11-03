@@ -1,0 +1,5 @@
+frames/
+node_modules/
+reel.mp4
+data.json
+package*.json
