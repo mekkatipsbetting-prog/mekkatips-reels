@@ -61,7 +61,7 @@ P.forEach((p,i)=>{const c=document.createElement('div');c.className='card';c.id=
  c.innerHTML=`<div class="tag">${esc(p.tag||'')}</div><div class="pick">${esc(p.pick)}</div><div class="meta">Odds ${esc(p.odds)}</div><div class="ok">✅</div><div class="u">+${Number(p.units).toFixed(2)}u</div>`;$('cards').appendChild(c);});
 const totTop=330+N*230+30,ctaTop=totTop+320;
 $('total').style.top=totTop+'px';$('total').innerHTML=`<div class="n" id="n">+0.00u</div><div class="l">${esc(D.total_label||'')}</div>`;
-$('cta').style.top=ctaTop+'px';$('cta').innerHTML=`<div class="a">Picks completos y récord en la web</div><div class="url">mekkatipsbetting.com</div><div class="b">Plus: link en comentarios</div>`;
+$('cta').style.top=ctaTop+'px';$('cta').innerHTML=`<div class="a">Picks completos y récord en la web</div><div class="url">mekkatipsbetting.com</div><div class="b">Link en la descripción</div>`;
 const pc=Math.min(1.4,Math.max(0.7,Number(S.pace)||1));
 const START=2.4,STEP=1.0*pc,tTot=START+N*STEP+0.6,tCta=tTot+2.2;window.DURATION=tCta+3.2;
 function render(t){
