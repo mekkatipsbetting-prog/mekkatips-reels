@@ -1,0 +1,187 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#070b14;font-family:'Inter','Helvetica Neue',Arial,sans-serif;color:#fff}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden}
+.layer{position:absolute;inset:0}
+.scene{position:absolute;inset:0;opacity:0}
+.c{position:absolute;left:60px;right:60px;text-align:center}
+.big{font-weight:900;letter-spacing:-2px;line-height:1.02}
+.pill{display:inline-block;padding:14px 34px;border-radius:60px;font-weight:800;letter-spacing:3px;font-size:34px}
+.card{position:absolute;left:70px;right:70px;border-radius:36px;background:rgba(10,16,32,.72);border:2px solid rgba(255,255,255,.14);backdrop-filter:blur(6px);padding:40px}
+.brand{position:absolute;top:70px;left:0;right:0;text-align:center;font-weight:900;font-size:44px;letter-spacing:8px}
+.brand span{color:#2ee6a6}
+.foot{position:absolute;bottom:60px;left:0;right:0;text-align:center;font-size:28px;color:rgba(255,255,255,.6);letter-spacing:2px}
+.stat{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:44px}
+.stat:last-child{border:none}.stat b{font-size:64px;font-weight:900}
+</style></head><body><div id="stage">
+<div class="layer" id="bg"></div>
+<div class="brand">MEKKA<span>TIPS</span></div>
+
+<!-- S1 HOOK -->
+<div class="scene" id="s1">
+ <div class="c" style="top:520px"><div class="pill" style="background:#2ee6a6;color:#04120c" id="h_pill"></div></div>
+ <div class="c big" style="top:660px;font-size:300px;white-space:nowrap;color:#2ee6a6" id="s1t"></div>
+ <div class="c big" style="top:1000px;font-size:80px" id="s1u"></div>
+ <div class="c" style="top:1260px;font-size:46px;color:#fdbb30;font-weight:800;letter-spacing:2px" id="s1v"></div>
+</div>
+<!-- S2 MODEL -->
+<div class="scene" id="s2">
+ <div class="c" style="top:300px"><div class="pill" style="background:#fff;color:#070b14" id="m_pill"></div></div>
+ <div class="card" style="top:430px">
+  <div id="s2a" style="font-size:58px;font-weight:900;line-height:1.1"></div>
+  <div style="height:26px"></div>
+  <div class="stat" id="s2b"><span id="m_l1"></span><b style="color:#2ee6a6" id="m_v1"></b></div>
+  <div class="stat" id="s2c"><span id="m_l2"></span><b style="color:#fdbb30" id="m_v2"></b></div>
+  <div class="stat" id="s2d"><span id="m_l3"></span><b id="m_v3"></b></div>
+ </div>
+</div>
+<!-- S3 MATCHUP -->
+<div class="scene" id="s3">
+ <div class="c" style="top:260px"><div class="pill" style="background:rgba(255,255,255,.14)" id="d_pill"></div></div>
+ <div id="tA" style="position:absolute;left:0;top:420px;width:540px;height:700px;clip-path:polygon(0 0,100% 0,88% 100%,0 100%)"></div>
+ <div id="tB" style="position:absolute;right:0;top:420px;width:540px;height:700px;clip-path:polygon(12% 0,100% 0,100% 100%,0 100%)"></div>
+ <div id="tAn" style="position:absolute;left:30px;top:600px;width:470px;text-align:center"></div>
+ <div id="tBn" style="position:absolute;right:30px;top:600px;width:470px;text-align:center"></div>
+ <div id="vs" style="position:absolute;left:0;right:0;top:700px;text-align:center;font-size:90px;font-weight:900;color:#fff;text-shadow:0 0 40px #000">@</div>
+ <div class="card" style="top:1180px;padding:20px 40px" id="rowsCard"></div>
+</div>
+<!-- S4 PICK -->
+<div class="scene" id="s4">
+ <div class="c" style="top:300px"><div class="pill" style="background:#2ee6a6;color:#04120c" id="p_pill"></div></div>
+ <div class="c big" style="top:420px;font-size:96px" id="s4t"></div>
+ <div class="c big" style="top:820px;font-size:170px;white-space:nowrap;color:#fdbb30" id="s4o"></div>
+ <div class="c" style="top:1040px;font-size:50px;font-weight:700" id="s4b"></div>
+ <div class="card" style="top:1200px" id="s4c"></div>
+</div>
+<!-- S5 RESULT -->
+<div class="scene" id="s5">
+ <div class="c" style="top:300px"><div class="pill" style="background:rgba(255,255,255,.14)" id="r_pill"></div></div>
+ <div class="card" style="top:430px;padding:50px">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+   <div style="text-align:center;width:42%"><div style="font-size:40px;font-weight:800;color:#fdbb30" id="r_an"></div><div class="big" style="font-size:230px" id="r1"></div></div>
+   <div style="font-size:60px;opacity:.5">–</div>
+   <div style="text-align:center;width:42%"><div style="font-size:40px;font-weight:800;color:#b8c4ca" id="r_hn"></div><div class="big" style="font-size:230px;opacity:.55" id="r1h"></div></div>
+  </div>
+ </div>
+ <div class="c big" style="top:1050px;font-size:110px;color:#2ee6a6" id="r2"></div>
+ <div class="c" style="top:1400px;font-size:90px;font-weight:900" id="r3"></div>
+</div>
+<!-- S6 RECORD + CTA -->
+<div class="scene" id="s6">
+ <div class="c" style="top:230px"><div class="pill" style="background:#fff;color:#070b14" id="g_pill"></div></div>
+ <div class="c big" style="top:330px;font-size:210px;white-space:nowrap;color:#2ee6a6" id="g1"></div>
+ <div class="c big" style="top:560px;font-size:100px" id="g2"></div>
+ <div class="card" style="top:720px;height:640px;padding:30px 20px 20px" id="g4">
+  <div style="font-size:30px;color:#9fb0c8;letter-spacing:2px;padding-left:20px" id="g_t"></div>
+  <svg id="chart" width="900" height="520" viewBox="0 0 900 520" style="margin-top:10px">
+   <defs><linearGradient id="ar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2ee6a6" stop-opacity=".45"/><stop offset="1" stop-color="#2ee6a6" stop-opacity="0"/></linearGradient></defs>
+   <g id="grid"></g><path id="area" fill="url(#ar)" opacity="0"/><path id="line" fill="none" stroke="#2ee6a6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><g id="dots"></g><g id="lbls"></g>
+  </svg>
+ </div>
+ <div class="c" style="top:1470px" id="g3"><div class="pill" style="background:#2ee6a6;color:#04120c;font-size:46px">mekkatipsbetting.com</div></div>
+</div>
+<div id="cap" style="position:absolute;left:50px;right:50px;top:1690px;text-align:center;font-size:48px;font-weight:800;line-height:1.2;text-shadow:0 3px 14px #000;opacity:0"></div>
+<div class="foot" id="foot"></div>
+</div>
+<script>
+window.DURATION=27;
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=x=>1-Math.pow(1-cl(x),3);
+const eb=x=>{x=cl(x);const c=1.70158;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const DEF={lang:'es',sportLabel:'NBA',scope:'LA NBA',date:'LUN 9 NOV',
+ away:{name:'PACERS',city:'INDIANA',rec:'3-7',c1:'#002D62',c2:'#001633',ac:'#fdbb30'},
+ home:{name:'MAVERICKS',city:'DALLAS',rec:'6-4',c1:'#00538C',c2:'#00243d',ac:'#b8c4ca'},
+ rows:[['Mercado','1H Pacers TT'],['Línea','53.5'],['Modelo proyecta','Over']],
+ pickTitle:'PACERS<br>TEAM TOTAL<br>1ª MITAD',big:'OVER 53.5',odds:'-110',book:'DraftKings',pm:63,pk:50,
+ sc:{label:'h1',a:66,h:56},units:'+0.91u',
+ rec:{w:23,l:15,u:3.51,pts:[['1/11',2.67],['2/11',3.55],['4/11',4.24],['5/11',4.24],['6/11',4.37],['7/11',2.66],['9/11',3.51]]},
+ sub:'desde el 1 de noviembre'};
+const D=Object.assign({},DEF,window.DATA&&window.DATA.kind==='story'?window.DATA:{});
+const es=D.lang!=='en';
+const rec=D.rec,uSign=v=>(v>=0?'+':'')+v.toFixed(2)+'u';
+D.units2=uSign(rec.u);
+const T=es?{hook:'EN LA 1ª MITAD DE '+D.scope,how:'¿CÓMO? MIRA EL MODELO ▸',how2:'CÓMO FUNCIONA',m0:'Modelo entrenado con miles de partidos',m1:'Compara',m1v:'Modelo vs Mercado',m2:'Solo juega si hay',m2v:'+EDGE',m3:'Especialidad',m3v:'1ª MITAD',away:'VISITA',home:'LOCAL',rec:'RÉCORD',pick:'EL PICK',mod:'MODELO',mkt:'MERCADO',hit:'CUMPLIÓ',res1:'RESULTADO · 1ª MITAD',res2:'RESULTADO · FINAL',recp:'RÉCORD · ',chart:'UNIDADES ACUMULADAS',foot:'21+ · Juega con responsabilidad',
+  caps:['Así va el modelo en la <b>1ª mitad</b>','Compara el <b>modelo</b> contra el <b>mercado</b>','Línea <b>'+(D.rows[1]||['',''])[1]+'</b> del mercado','El pick: <b>'+D.big+'</b>','Resultado: <b>'+D.sc.a+'–'+D.sc.h+'</b> ✔','<b>'+D.units2+'</b> '+D.sub]}
+:{hook:'IN THE 1ST HALF OF '+D.scope,how:'HOW? SEE THE MODEL ▸',how2:'HOW IT WORKS',m0:'Model trained on thousands of games',m1:'Compares',m1v:'Model vs Market',m2:'Only plays with',m2v:'+EDGE',m3:'Specialty',m3v:'1ST HALF',away:'AWAY',home:'HOME',rec:'RECORD',pick:'THE PICK',mod:'MODEL',mkt:'MARKET',hit:'HIT',res1:'RESULT · 1ST HALF',res2:'RESULT · FINAL',recp:'RECORD · ',chart:'CUMULATIVE UNITS',foot:'21+ · Bet responsibly',
+  caps:['How the model does in the <b>1st half</b>','It compares the <b>model</b> to the <b>market</b>','Market line <b>'+(D.rows[1]||['',''])[1]+'</b>','The pick: <b>'+D.big+'</b>','Result: <b>'+D.sc.a+'–'+D.sc.h+'</b> ✔','<b>'+D.units2+'</b> '+D.sub]};
+// textos
+$('h_pill').textContent=D.sportLabel+' · '+(es?'1ª MITAD':'1ST HALF');$('s1t').textContent=rec.w+'-'+rec.l;$('s1u').innerHTML=T.hook.replace(/ DE | OF /,m=>m+'<br>');$('s1v').textContent=T.how;
+$('m_pill').textContent=T.how2;$('s2a').textContent=T.m0;$('m_l1').textContent=T.m1;$('m_v1').textContent=T.m1v;$('m_l2').textContent=T.m2;$('m_v2').textContent=T.m2v;$('m_l3').textContent=T.m3;$('m_v3').textContent=T.m3v;
+$('d_pill').textContent=D.date;
+$('tA').style.background=`linear-gradient(160deg,${D.away.c1},${D.away.c2})`;$('tB').style.background=`linear-gradient(200deg,${D.home.c1},${D.home.c2})`;
+const nm=(o,lab,col,fs)=>`<div style="font-size:30px;letter-spacing:4px;color:${col};font-weight:800">${lab}</div><div class="big" style="font-size:${fs}px">${o.name}</div><div style="font-size:30px;margin-top:10px;color:${col}">${o.city||''}</div>`+(o.rec?`<div style="font-size:28px;margin-top:26px;color:#9fb0c8;letter-spacing:3px">${T.rec}</div><div class="big" style="font-size:80px">${o.rec}</div>`:'');
+$('tAn').innerHTML=nm(D.away,T.away,D.away.ac,D.away.name.length>7?62:86);$('tBn').innerHTML=nm(D.home,T.home,D.home.ac,D.home.name.length>7?62:86);
+$('rowsCard').innerHTML=D.rows.map((r,i)=>`<div class="stat" id="row${i}"><span>${r[0]}</span><b style="color:${i==1?'#fdbb30':i==2?'#2ee6a6':'#fff'}">${r[1]}</b></div>`).join('');
+$('p_pill').textContent=T.pick;$('s4t').innerHTML=D.pickTitle;$('s4o').textContent=D.big;$('s4b').textContent=D.odds+(D.book?' · '+D.book:'');
+$('s4c').innerHTML='<div style="display:flex;justify-content:space-around;text-align:center">'+(D.pm!=null?`<div><div style="font-size:30px;color:#9fb0c8">${T.mod}</div><div class="big" style="font-size:96px;color:#2ee6a6" id="pm">${D.pm}%</div></div>`:'')+(D.pk!=null?`<div><div style="font-size:30px;color:#9fb0c8">${T.mkt}</div><div class="big" style="font-size:96px" id="pk">${D.pk}%</div></div>`:'')+'</div>';
+if(D.pm==null&&D.pk==null)$('s4c').style.display='none';
+$('r_pill').textContent=D.sc.label==='h1'?T.res1:T.res2;$('r_an').textContent=D.away.name;$('r_hn').textContent=D.home.name;$('r2').innerHTML='✔ '+(D.hit||D.big)+'<br>'+T.hit+'!';$('r3').textContent=D.units;$('r1h').textContent=D.sc.h;
+$('g_pill').textContent=T.recp+D.sportLabel+' · '+D.sub.toUpperCase();$('g1').textContent=rec.w+'-'+rec.l;$('g2').textContent=D.units2;$('g_t').textContent=T.chart;$('foot').textContent=T.foot;
+if(D.rec.u<0){$('g1').style.color='#ff6b6b';$('s1t').style.color='#ff6b6b'}
+// fondo
+let seed=7;function rnd(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646}
+const S=[[0,3.5],[3.5,7],[7,12],[12,17],[17,21],[21,27]];
+const bg=$('bg');
+const palette=[[D.away.c1,D.away.ac],[D.home.c1,D.home.ac],['#0b1a3a','#2ee6a6']];
+let h='<div id="grad" class="layer"></div>';
+h+=`<svg id="court" class="layer" viewBox="0 0 1080 1920" style="opacity:.28;transform-origin:50% 50%"><g fill="none" stroke="#fff" stroke-width="5">
+<rect x="90" y="140" width="900" height="1640" rx="8"/><line x1="90" y1="960" x2="990" y2="960"/><circle cx="540" cy="960" r="150"/>
+<rect x="340" y="140" width="400" height="380"/><circle cx="540" cy="520" r="150"/><path d="M190 140 V330 A360 360 0 0 0 890 330 V140"/>
+<rect x="340" y="1400" width="400" height="380"/><circle cx="540" cy="1400" r="150"/><path d="M190 1780 V1590 A360 360 0 0 1 890 1590 V1780"/></g></svg>`;
+let blobs=[];for(let i=0;i<7;i++){const p=palette[i%3];blobs.push({x:rnd()*1080,y:rnd()*1920,r:200+rnd()*260,c:p[i%2],ph:rnd()*6.28,sp:.3+rnd()*.5});}
+blobs.forEach((b,i)=>h+=`<div id="bl${i}" style="width:${b.r*2}px;height:${b.r*2}px;border-radius:50%;background:radial-gradient(circle,${b.c}55,transparent 70%);position:absolute;left:0;top:0"></div>`);
+let balls=[];for(let i=0;i<4;i++)balls.push({x:rnd()*900+60,y:rnd()*1700+100,s:90+rnd()*160,ph:rnd()*6.28,sp:.4+rnd()*.6,rot:rnd()*360});
+const ballSVG=s=>`<svg width="${s}" height="${s}" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="#e8742a" stroke="#1a0d05" stroke-width="3"/><g fill="none" stroke="#1a0d05" stroke-width="2.5"><path d="M50 3V97M3 50H97"/><path d="M15 15C40 38 40 62 15 85M85 15C60 38 60 62 85 85"/></g></svg>`;
+balls.forEach((b,i)=>h+=`<div id="ba${i}" style="position:absolute;left:0;top:0;opacity:.22;filter:blur(${i>1?4:0}px)">${ballSVG(b.s)}</div>`);
+h+='<div class="layer" style="background:linear-gradient(180deg,rgba(7,11,20,.55),rgba(7,11,20,.15) 40%,rgba(7,11,20,.7))"></div>';
+bg.innerHTML=h;
+const accents=[['#0b1a3a','#05080f'],['#0b2a24','#05080f'],[D.away.c1,D.home.c2],['#10301f','#05080f'],['#1a2a52','#05080f'],['#0b2a24','#05080f']];
+function fade(i,t){const [a,b]=S[i];const fi=cl((t-a)/.45),fo=cl((b-t)/.45);return Math.min(fi,i==5?1:fo)}
+function set(el,p,y=0,sc=1){el.style.opacity=p;el.style.transform=`translateY(${(1-p)*y}px) scale(${sc})`}
+// grafico
+const P=rec.pts,X0=60,X1=860,YT=60,YB=420;
+const vals=P.map(p=>p[1]);const vmin=Math.min(0,...vals),vmax=Math.max(0.5,...vals);
+const px=i=>P.length>1?X0+(X1-X0)*i/(P.length-1):(X0+X1)/2,py=v=>YB-(v-vmin)/(vmax-vmin)*(YB-YT);
+const pts=P.map((p,i)=>[px(i),py(p[1])]);
+const dpath=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ');
+$('line').setAttribute('d',dpath);$('area').setAttribute('d',dpath+` L${pts[pts.length-1][0]} ${py(0)} L${pts[0][0]} ${py(0)} Z`);
+let gh=`<line x1="30" x2="880" y1="${py(0)}" y2="${py(0)}" stroke="#fff" stroke-opacity=".35" stroke-width="3" stroke-dasharray="10 10"/><text x="30" y="${py(0)-10}" fill="#9fb0c8" font-size="26">0u</text>`;
+const tp=Math.ceil(vmax);if(tp>0&&py(tp)>YT-30)gh+=`<line x1="30" x2="880" y1="${py(tp)}" y2="${py(tp)}" stroke="#fff" stroke-opacity=".1" stroke-width="2"/><text x="30" y="${py(tp)-8}" fill="#9fb0c8" font-size="26">+${tp}u</text>`;
+$('grid').innerHTML=gh;
+const last=P.length-1,step=Math.max(1,Math.ceil(P.length/7));
+let dh='',lh='';pts.forEach((q,i)=>{dh+=`<circle id="dt${i}" cx="${q[0]}" cy="${q[1]}" r="13" fill="#070b14" stroke="${i==last?'#fdbb30':'#2ee6a6'}" stroke-width="7" opacity="0"/>`;if(i%step===0||i==last)lh+=`<text x="${q[0]}" y="490" text-anchor="middle" fill="#9fb0c8" font-size="26">${P[i][0]}</text>`});
+$('dots').innerHTML=dh;$('lbls').innerHTML=lh;
+$('dots').insertAdjacentHTML('beforeend',`<text id="endlbl" x="${pts[last][0]-10}" y="${pts[last][1]-30}" text-anchor="end" fill="#fdbb30" font-size="44" font-weight="900" opacity="0">${D.units2}</text>`);
+const LEN=$('line').getTotalLength();$('line').style.strokeDasharray=LEN;
+// subtitulos
+const CAPS=[[T.caps[0],.5],[T.caps[1],.3],[T.caps[2],.6],[T.caps[3],.5],[T.caps[4],.5],[T.caps[5],.8]];
+const capEl=$('cap');let lastK=-1;
+function caption(t,k){const [txt,d]=CAPS[k];if(lastK!==k){capEl.innerHTML=txt.replace(/<b>/g,'<b style="color:#2ee6a6">');lastK=k}
+ const lt=t-S[k][0];capEl.style.opacity=cl((lt-d)/.3)*cl((S[k][1]-t)/.3);capEl.style.transform=`translateY(${(1-cl((lt-d)/.3))*20}px)`}
+window.render=function(t){
+ const si=S.findIndex(s=>t<s[1]);const k=si<0?5:si;
+ $('grad').style.background=`radial-gradient(120% 80% at 50% 20%,${accents[k][0]},${accents[k][1]})`;
+ $('court').style.transform=`scale(${1.08+0.0125*t}) rotate(${Math.sin(t*.3)*1.5}deg) translateY(${Math.sin(t*.5)*30}px)`;
+ blobs.forEach((b,i)=>{$('bl'+i).style.transform=`translate(${b.x-b.r+Math.sin(t*b.sp+b.ph)*140}px,${b.y-b.r+Math.cos(t*b.sp+b.ph)*160}px)`});
+ balls.forEach((b,i)=>{const bounce=Math.abs(Math.sin(t*b.sp*2+b.ph))*180;$('ba'+i).style.transform=`translate(${b.x+Math.sin(t*b.sp+b.ph)*120}px,${b.y-bounce}px) rotate(${b.rot+t*60*(i%2?1:-1)}deg)`});
+ for(let i=0;i<6;i++){const s=$('s'+(i+1));const o=fade(i,t);s.style.opacity=o;s.style.display=o>0?'block':'none'}
+ const L=i=>t-S[i][0];caption(t,k);
+ set($('s1t'),eb(L(0)/.6),0,.6+.4*eb(L(0)/.6));set($('s1u'),eo((L(0)-.6)/.4),40);set($('s1v'),eo((L(0)-1.6)/.4),30);
+ set($('s2a'),eo(L(1)/.5),40);set($('s2b'),eo((L(1)-.5)/.4),50);set($('s2c'),eo((L(1)-1.1)/.4),50);set($('s2d'),eo((L(1)-1.7)/.4),50);
+ $('tA').style.transform=`translateX(${(1-eo(L(2)/.6))*-600}px)`;$('tB').style.transform=`translateX(${(1-eo(L(2)/.6))*600}px)`;
+ set($('tAn'),eo((L(2)-.4)/.5),40);set($('tBn'),eo((L(2)-.5)/.5),40);
+ $('vs').style.transform=`scale(${eb((L(2)-.7)/.4)})`;$('vs').style.opacity=cl((L(2)-.7)/.2);
+ D.rows.forEach((r,i)=>set($('row'+i),eo((L(2)-1.6-i)/.4),40));
+ set($('s4t'),eo(L(3)/.5),40);
+ $('s4o').style.opacity=cl((L(3)-.6)/.2);$('s4o').style.transform=`scale(${.6+.4*eb((L(3)-.6)/.5)})`;
+ const cnt=eo((L(3)-1.8)/1.2);if($('pm'))$('pm').textContent=Math.round(50+(D.pm-50)*cnt)+'%';
+ const n=eo(L(4)/1.4);$('r1').textContent=Math.round(D.sc.a*n);$('r1h').textContent=Math.round(D.sc.h*n);
+ set($('r2'),eo((L(4)-1.6)/.4),30,.8+.2*eb((L(4)-1.6)/.5));set($('r3'),eo((L(4)-2.4)/.4),30);
+ set($('g1'),eb(L(5)/.6),0,.7+.3*eb(L(5)/.6));set($('g2'),eo((L(5)-.7)/.4),40);set($('g4'),eo((L(5)-1.2)/.5),40);
+ const cp=eo((L(5)-1.8)/2.6);$('line').style.strokeDashoffset=LEN*(1-cp);$('area').style.opacity=cl((L(5)-4.2)/.6);$('area').setAttribute('opacity',1);
+ P.forEach((c,i)=>{$('dt'+i).setAttribute('opacity',cp>=(last?i/last:1)-0.001?1:0)});$('endlbl').setAttribute('opacity',cl((L(5)-4.3)/.4));
+ set($('g3'),eo((L(5)-4.6)/.5),40);
+};
+window.render(0);
+</script></body></html>
