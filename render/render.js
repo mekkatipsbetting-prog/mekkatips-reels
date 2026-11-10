@@ -10,7 +10,9 @@ await b.close();
 const out=story?'reel_silent.mp4':'reel.mp4';
 execSync(`ffmpeg -y -loglevel error -framerate 30 -i frames/f_%04d.jpg -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -movflags +faststart ${out}`,{stdio:'inherit'});
 if(story){
-  try{execSync('python3 render/make_audio.py audio.wav',{stdio:'inherit'});
+  try{
+    try{execSync('python3 -c "import numpy"',{stdio:'ignore'});}catch(e){execSync('python3 -m pip install --quiet --break-system-packages numpy',{stdio:'inherit'});}
+    execSync('python3 render/make_audio.py audio.wav',{stdio:'inherit'});
     execSync('ffmpeg -y -loglevel error -i reel_silent.mp4 -i audio.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 160k -shortest -movflags +faststart reel.mp4',{stdio:'inherit'});
   }catch(e){console.log('audio fallo, se publica sin audio',e.message);fs.copyFileSync('reel_silent.mp4','reel.mp4');}
 }
