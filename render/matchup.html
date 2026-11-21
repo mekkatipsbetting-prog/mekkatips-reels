@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1920px;overflow:hidden;background:#0f1419;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#fff}
+.sc{position:absolute;inset:0;padding:140px 90px;display:flex;flex-direction:column;justify-content:center;opacity:0}
+@keyframes show{0%{opacity:0;transform:translateY(60px)}8%{opacity:1;transform:none}92%{opacity:1}100%{opacity:0}}
+@keyframes grow{from{width:0}}
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+.brand{position:absolute;top:75px;left:90px;font-size:38px;letter-spacing:4px;color:#ff8a3d;font-weight:800;z-index:5}
+.lbl{font-size:44px;color:#9fb0bf;letter-spacing:3px;text-transform:uppercase;margin-bottom:44px}
+.big{font-size:136px;font-weight:900;line-height:1.02}
+.mid{font-size:70px;font-weight:800}
+.sub{font-size:48px;color:#c9d4de;margin-top:30px;line-height:1.4}
+.team{border-radius:32px;padding:44px 54px;margin:20px 0;display:flex;justify-content:space-between;align-items:center;animation:pop .6s both}
+.num{font-size:128px;font-weight:900}
+.row{margin:26px 0}.row span{font-size:46px;color:#c9d4de}
+.bar{height:50px;border-radius:25px;margin-top:14px;animation:grow 1.2s ease-out both}
+.foot{position:absolute;bottom:90px;left:90px;right:90px;font-size:36px;color:#7d8c99}
+.prog{position:absolute;top:0;left:0;height:12px;background:#ff8a3d;width:100%;animation:grow 15s linear both}
+</style></head><body><div id="root"></div>
+<script>
+const D=window.DATA||{};const es=D.lang==='es';window.DURATION=15;
+const C={Hawks:'#C8102E',Celtics:'#007A33',Nets:'#3a3a3a',Hornets:'#1D1160',Bulls:'#CE1141',Cavaliers:'#860038',Mavericks:'#00538C',Nuggets:'#0E2240',Pistons:'#C8102E',Warriors:'#1D428A',Rockets:'#CE1141',Pacers:'#002D62',Clippers:'#C8102E',Lakers:'#552583',Grizzlies:'#5D76A9',Heat:'#98002E',Bucks:'#00471B',Timberwolves:'#0C2340',Pelicans:'#0C2340',Knicks:'#006BB6',Thunder:'#007AC1',Magic:'#0077C0','76ers':'#006BB6',Suns:'#1D1160','Trail Blazers':'#E03A3E',Kings:'#5A2D81',Spurs:'#3a3a3a',Raptors:'#CE1141',Jazz:'#002B5C',Wizards:'#002B5C'};
+const nick=t=>{const w=String(t||'').trim().split(/\s+/);const two=w.slice(-2).join(' ');return two==='Trail Blazers'?two:w[w.length-1];};
+const A=D.away||{},H=D.home||{},h2h=D.head_to_head||{};
+const an=nick(A.team),hn=nick(H.team);let ac=C[an]||'#1f3a93',hc=C[hn]||'#8e1b1b';if(ac===hc)hc='#5f6b77';
+const f1=v=>(v==null||isNaN(v))?'—':Number(v).toFixed(1);
+const T=es?{tonight:'Esta noche · solo la 1.ª mitad',q:'¿Qué ve nuestro modelo?',proj:'Proyección MekkaTips · 1.ª mitad',tot:'Total proyectado',l10:'Últimos 10 partidos · 1.ª mitad',sc:'anotan',al:'permiten',h:'Cara a cara · 1.ª mitad',avg:n=>'Promedio de '+n+' partidos · 2025-26 y 2026-27',key:'La clave',ask:'¿Quién se lleva el primer tiempo?',foot:'mekkatipsbetting.com · Datos ESPN + modelo MekkaTips'}
+:{tonight:'Tonight · first half only',q:'What does our model see?',proj:'MekkaTips projection · 1st half',tot:'Projected total',l10:'Last 10 games · 1st half',sc:'score',al:'allow',h:'Head-to-head · 1st half',avg:n=>'Average of '+n+' games · 2025-26 and 2026-27',key:'The key',ask:'Who takes the first half?',foot:'mekkatipsbetting.com · ESPN data + MekkaTips model'};
+const ma=+A.model_1h,mh=+H.model_1h,diff=Math.abs(ma-mh),fav=ma>=mh?an:hn;
+let key;
+if(diff<1)key=es?'El modelo ve una primera mitad pareja: menos de un punto entre los dos.':'Our model sees an even first half: less than one point apart.';
+else{key=es?'El modelo pone a los '+fav+' arriba por '+f1(diff)+' puntos en la primera mitad':'Our model has the '+fav+' up '+f1(diff)+' points in the first half';
+ const hf=(+h2h.away_avg_1h>=+h2h.home_avg_1h)?an:hn;
+ if(+h2h.games>=2&&hf===fav)key+=es?', y también domina el cara a cara.':', and they also lead the head-to-head.';
+ else if(+A.allows_1h_last10>60&&+H.allows_1h_last10>60)key+=es?', con dos defensas que conceden más de 60.':', with both defenses allowing 60+.';
+ else key+='.';}
+const mx=Math.max(+A.avg_1h_last10,+A.allows_1h_last10,+H.avg_1h_last10,+H.allows_1h_last10)||1;const w=v=>Math.round(+v/mx*92);
+const bar=(txt,v,col,d)=>`<div class="row"><span>${txt} <b style="color:#fff">${f1(v)}</b></span><div class="bar" style="width:${w(v)}%;background:${col};animation-delay:${d}s"></div></div>`;
+const tm=(n,v,col,d)=>`<div class="team" style="background:${col};animation-delay:${d}s"><span class="mid">${n}</span><span class="num">${f1(v)}</span></div>`;
+document.getElementById('root').innerHTML=`<div class="prog"></div><div class="brand">MEKKATIPS · NBA</div>
+<div class="sc" style="animation:show 3s 0s both"><div class="lbl">${T.tonight}</div><div class="big"><span style="color:${ac==='#002B5C'||ac==='#0C2340'||ac==='#0E2240'||ac==='#002D62'?'#5b8ed6':ac}">${an.toUpperCase()}</span><br><span style="font-size:90px;color:#9fb0bf">@</span><br><span style="color:${hc==='#002B5C'||hc==='#0C2340'||hc==='#0E2240'||hc==='#002D62'?'#5b8ed6':hc}">${hn.toUpperCase()}</span></div><div class="sub" style="color:#ff8a3d;font-weight:800">${T.q}</div></div>
+<div class="sc" style="animation:show 3.2s 3s both"><div class="lbl">${T.proj}</div>${tm(an,ma,ac,3.3)}${tm(hn,mh,hc,3.7)}<div class="sub">${T.tot} <b style="color:#fff;font-size:84px">${f1(D.model_total_1h)}</b></div></div>
+<div class="sc" style="animation:show 3.4s 6.2s both"><div class="lbl">${T.l10}</div>${bar(an+' '+T.sc,A.avg_1h_last10,ac,6.4)}${bar(an+' '+T.al,A.allows_1h_last10,'#7a8a99',6.6)}${bar(hn+' '+T.sc,H.avg_1h_last10,hc,6.8)}${bar(hn+' '+T.al,H.allows_1h_last10,'#7a8a99',7)}</div>
+<div class="sc" style="animation:show 3s 9.6s both"><div class="lbl">${T.h}</div>${(+h2h.games>0)?tm(an,h2h.away_avg_1h,ac,9.8)+tm(hn,h2h.home_avg_1h,hc,10.1)+`<div class="sub">${T.avg(h2h.games)}</div>`:`<div class="mid">—</div>`}</div>
+<div class="sc" style="animation:show 2.6s 12.4s both"><div class="lbl">${T.key}</div><div class="mid" style="line-height:1.3">${key}</div><div class="sub" style="color:#ff8a3d;font-weight:800;margin-top:60px">${T.ask}</div></div>
+<div class="foot">${T.foot}</div>`;
+window.render=t=>{document.getAnimations().forEach(a=>{a.pause();a.currentTime=t*1000;});};
+window.render(0);
+</script></body></html>
