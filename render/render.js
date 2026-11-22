@@ -1,5 +1,6 @@
 const {chromium}=require('playwright');const fs=require('fs');const {execSync}=require('child_process');
-(async()=>{const data=JSON.parse(fs.readFileSync('data.json','utf8'));
+if(JSON.parse(fs.readFileSync('data.json','utf8')).kind==='short'){process.env.SHORT_OUT='reel.mp4';require('../shorts/render.js');}
+else (async()=>{const data=JSON.parse(fs.readFileSync('data.json','utf8'));
 const tpl={story:'story.html',matchup:'matchup.html'}[data.kind]||'reel.html';
 const withAudio=data.kind==='story'||data.kind==='matchup';
 const b=await chromium.launch(process.env.CHROME?{executablePath:process.env.CHROME}:{});const p=await b.newPage({viewport:{width:1080,height:1920}});
